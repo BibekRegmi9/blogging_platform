@@ -27,3 +27,9 @@ export class User extends CommonEntity {
     @Column({ type: 'timestamp with time zone', nullable: true })
     birth_date: Date;
 }
+
+
+export interface JwtPayload {
+    id: number; 
+    username: string; 
+  }
