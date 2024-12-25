@@ -1,6 +1,8 @@
 import { Exclude } from "class-transformer";
 import { CommonEntity } from "src/common/common.entity";
-import { Column, Entity } from "typeorm";
+import { BeforeInsert, Column, Entity } from "typeorm";
+import * as bcrypt from 'bcrypt';
+
 
 @Entity({name: 'users'})
 export class User extends CommonEntity {
@@ -15,6 +17,11 @@ export class User extends CommonEntity {
     @Exclude()
     password: string;
 
+//     @BeforeInsert()
+//     async hashPassword() {
+//     this.password = await bcrypt.hash(this.password, 10);
+//   }
+
     @Column({default:null})
     profile_pic: string;
 
@@ -27,6 +34,7 @@ export class User extends CommonEntity {
     @Column({ type: 'timestamp with time zone', nullable: true })
     birth_date: Date;
 }
+
 
 
 export interface JwtPayload {

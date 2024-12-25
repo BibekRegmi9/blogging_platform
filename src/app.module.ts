@@ -8,6 +8,8 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
 import { AuthGuardMiddleware } from './middleware/authGuardMiddleware';
 import { AuthModule } from './user/auth.module';
+import { AuthController } from './user/auth.controller';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -25,26 +27,33 @@ import { AuthModule } from './user/auth.module';
       database: 'blogging_db',
       entities: [User],
       synchronize: true,
+      logging: true,
     }),
     UserModule,
-    AuthModule
+    AuthModule,
+    JwtModule.register({
+      secret: 'your-secret-key',  
+      signOptions: { expiresIn: '3h' },  
+    }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
-    { provide: APP_GUARD,
-      useClass: JwtAuthGuard,},
+    // { provide: APP_GUARD,
+      // useClass: JwtAuthGuard,},
     AppService],
 })
-export class AppModule implements NestModule{
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthGuardMiddleware)
-      .exclude(
-        'auth/login',   
-        'auth/signup',  
-      )
-      .forRoutes('*');
-  }
+export class AppModule {
+//  implements NestModule{
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer
+//       .apply(AuthGuardMiddleware)
+//       .exclude(
+//         'auth',
+//         'auth/login',       
+//         'auth/signup',       
+//       )
+//       .forRoutes('*');
+//   }
 }
 
 
