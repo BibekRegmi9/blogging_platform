@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { CommonEntity } from "src/common/common.entity";
 import { Column, Entity } from "typeorm";
 
@@ -9,7 +10,9 @@ export class User extends CommonEntity {
     @Column({unique: true})
     email: string;    
 
-    @Column({nullable: false})
+    @Exclude({ toPlainOnly: true })
+    @Column({ select: false })
+    @Exclude()
     password: string;
 
     @Column({default:null})

@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class UserService {
@@ -24,12 +25,13 @@ export class UserService {
     return saveUser.id;
   }
 
-  async findAll() {
-    const query = `select *
-    from users;`;
+  async findAll():Promise<User[]> {
+    // const query = `select *
+    // from users;`;
 
-    const users = await this.userRepository.query(query);
-    return users;
+    // const users = await this.userRepository.query(query);
+    // return users;
+    return await this.userRepository.find();
   }
 
   async findOne(id: number) {

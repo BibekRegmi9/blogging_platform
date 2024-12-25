@@ -22,7 +22,7 @@ import { User } from './user/entities/user.entity';
       entities: [User],
       synchronize: true,
     }),
-    User
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
