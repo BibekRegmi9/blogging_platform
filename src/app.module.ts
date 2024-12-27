@@ -11,6 +11,7 @@ import { PostModule } from './post/post.module';
 import { Post } from './post/entities/post.entity';
 import { CommentModule } from './comment/comment.module';
 import { Comment } from './comment/entities/comment.entity';
+import { ImageDetails } from './post/entities/ImageDetails.entity';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { Comment } from './comment/entities/comment.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'blogging_db',
-      entities: [User, Post, Comment],
+      entities: [User, Post, Comment, ImageDetails],
       synchronize: true,
       logging: true,
     }),

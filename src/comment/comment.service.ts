@@ -40,7 +40,7 @@ export class CommentService {
     if(comment){
       return (await this.commentRepository.save({...comment, ...updateCommentDto})).id;
     } else {
-      throw BadRequestException.createBody({  message: 'Comment not found to update' });
+      throw new NotFoundException('Comment not found to update');
     }
   }
 
