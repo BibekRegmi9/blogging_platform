@@ -1,16 +1,14 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {Module} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
-import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './guard/jwt-auth.guard';
-import { AuthGuardMiddleware } from './middleware/authGuardMiddleware';
 import { AuthModule } from './user/auth.module';
 import { AuthController } from './user/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { PostModule } from './post/post.module';
+import { Post } from './post/entities/post.entity';
 
 @Module({
   imports: [
@@ -26,7 +24,7 @@ import { PostModule } from './post/post.module';
       username: 'postgres',
       password: 'postgres',
       database: 'blogging_db',
-      entities: [User],
+      entities: [User, Post],
       synchronize: true,
       logging: true,
     }),
@@ -40,22 +38,9 @@ import { PostModule } from './post/post.module';
   ],
   controllers: [AppController, AuthController],
   providers: [
-    // { provide: APP_GUARD,
-      // useClass: JwtAuthGuard,},
     AppService],
 })
 export class AppModule {
-//  implements NestModule{
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer
-//       .apply(AuthGuardMiddleware)
-//       .exclude(
-//         'auth',
-//         'auth/login',       
-//         'auth/signup',       
-//       )
-//       .forRoutes('*');
-//   }
 }
 
 

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Post } from './entities/post.entity';
 import { Repository } from 'typeorm';
@@ -19,9 +18,13 @@ export class PostService {
       post = await this.postRepository.findOne({ where: { id: createPostDto.id } });
     }
 
-    if (post) {
+    if (post!= null) {
       // Update existing post
-      Object.assign(post, createPostDto);
+      // Object.assign(post, createPostDto);
+      post.title = createPostDto.title;
+      post.content = createPostDto.content;
+      post.author = createPostDto.author;
+
     } else {
       // Create a new post
       post = this.postRepository.create(createPostDto);

@@ -1,7 +1,6 @@
 import { Exclude } from "class-transformer";
 import { CommonEntity } from "src/common/common.entity";
-import { BeforeInsert, Column, Entity } from "typeorm";
-import * as bcrypt from 'bcrypt';
+import { Column, Entity } from "typeorm";
 
 
 @Entity({name: 'users'})
@@ -16,11 +15,6 @@ export class User extends CommonEntity {
     @Column({ select: false })
     @Exclude()
     password: string;
-
-//     @BeforeInsert()
-//     async hashPassword() {
-//     this.password = await bcrypt.hash(this.password, 10);
-//   }
 
     @Column({default:null})
     profile_pic: string;
