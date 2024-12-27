@@ -19,8 +19,7 @@ export class PostService {
     }
 
     if (post!= null) {
-      // Update existing post
-      // Object.assign(post, createPostDto);
+      //update existing post
       post.title = createPostDto.title;
       post.content = createPostDto.content;
       post.author = createPostDto.author;
@@ -34,15 +33,15 @@ export class PostService {
     return savedPost.id;
   }
 
-  findAll() {
+  async findAll() {
     return this.postRepository.find();
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return this.postRepository.findOne({ where: { id } });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.postRepository.delete({ id });
   }
 }

@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PostModule } from './post/post.module';
 import { Post } from './post/entities/post.entity';
 import { CommentModule } from './comment/comment.module';
+import { Comment } from './comment/entities/comment.entity';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { CommentModule } from './comment/comment.module';
       username: 'postgres',
       password: 'postgres',
       database: 'blogging_db',
-      entities: [User, Post],
+      entities: [User, Post, Comment],
       synchronize: true,
       logging: true,
     }),
