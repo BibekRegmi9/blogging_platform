@@ -10,6 +10,7 @@ import { AuthGuardMiddleware } from './middleware/authGuardMiddleware';
 import { AuthModule } from './user/auth.module';
 import { AuthController } from './user/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { JwtModule } from '@nestjs/jwt';
       secret: 'your-secret-key',  
       signOptions: { expiresIn: '3h' },  
     }),
+    PostModule,
   ],
   controllers: [AppController, AuthController],
   providers: [
