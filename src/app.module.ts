@@ -9,6 +9,7 @@ import { AuthController } from './user/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { PostModule } from './post/post.module';
 import { Post } from './post/entities/post.entity';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { Post } from './post/entities/post.entity';
       signOptions: { expiresIn: '3h' },  
     }),
     PostModule,
+    CommentModule,
   ],
   controllers: [AppController, AuthController],
   providers: [
