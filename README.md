@@ -50,6 +50,9 @@ $ npm run start:prod
 ## In root directory of the project run: 
 $docker-compose up --build 
 
+```
+## Default Admin Credentials: email = admin@gmail.com    password = admin123
+
 ## Test the api using postman collection in the project folder 
 ## Api endpoints also present in  Api Documentation.docs file 
 
