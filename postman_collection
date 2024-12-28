@@ -1,0 +1,773 @@
+{
+	"info": {
+		"_postman_id": "66faba76-f427-4b13-991c-d9724bb5b928",
+		"name": "blog app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20581499"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoyLCJpYXQiOjE3MzUzNzMxMDYsImV4cCI6MTczNTM4MzkwNn0.GJiaQKlAH0OFBy82ofx5Z9agkCqyrrLR7QBMAXnYYWM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"Bibek Regmi\",\r\n    \"email\": \"1016matrixbibek@gmail.com\",\r\n    \"password\": \"string\",\r\n    \"gender\": \"mail\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1MjMxLCJleHAiOjE3MzUzODYwMzF9.yziadWwRgqtCVRFVTstE7o_24i1loHthVN_EW9GUHuU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3005/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1MjMxLCJleHAiOjE3MzUzODYwMzF9.yziadWwRgqtCVRFVTstE7o_24i1loHthVN_EW9GUHuU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"Danny Ramsey\",\r\n    \"gender\": \"female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/users/8",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoyLCJpYXQiOjE3MzUzNzMxMDYsImV4cCI6MTczNTM4MzkwNn0.GJiaQKlAH0OFBy82ofx5Z9agkCqyrrLR7QBMAXnYYWM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"danny@gmail.com\",\r\n    \"password\": \"Don12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"Danny Chaudhary\",\r\n    \"email\": \"danny@gmail.com\",\r\n    \"password\": \"Don12345\",\r\n    \"gender\": \"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoyLCJpYXQiOjE3MzUzNzMxMDYsImV4cCI6MTczNTM4MzkwNn0.GJiaQKlAH0OFBy82ofx5Z9agkCqyrrLR7QBMAXnYYWM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"test carter\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"Ddon12345\",\r\n    \"gender\": \"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/users/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "create or update post(to create post don't give id in body, to update give id in body)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"id\": 1,\r\n    \"title\": \" new post title is after updated\",\r\n    \"content\": \" new content of this post\",\r\n    \"author\": \"new author name is danny \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/post",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"content\": \"contents\",\r\n    \"author\": \"author name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/post",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"content\": \"contents\",\r\n    \"author\": \"author name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/post/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get image details by post id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"content\": \"contents\",\r\n    \"author\": \"author name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/post/image-details/post/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post",
+								"image-details",
+								"post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"content\": \"contents\",\r\n    \"author\": \"author name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/post/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc1NDc0LCJleHAiOjE3MzUzODYyNzR9.6r_Le4cKeJMikDvJB-W1CAmdjjKkoGB4pjTAOppgTso",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/vivek/Pictures/Screenshots/Screenshot 2024-10-03 203258.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3005/post/post-id/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post",
+								"post-id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpYmVrQGdtYWlsLmNvbSIsInN1YiI6MTAsImlhdCI6MTczNTI5NjAzMCwiZXhwIjoxNzM1MzA2ODMwfQ.PGIyvHVsszEo9dn0iAIOgJOOYKilf6f3Z5QAGJkj3cY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef2ef17-a82e-4750-a27b-7fda68ffbf5d"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3005/post/post-id/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"post",
+								"post-id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "create comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc3NTUwLCJleHAiOjE3MzUzODgzNTB9.FdIkui5-YYGG6c-Z6m034nKmkJSJKO_qytgGtp1ThXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"comment\": \"comment 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comment for a post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc3NTUwLCJleHAiOjE3MzUzODgzNTB9.FdIkui5-YYGG6c-Z6m034nKmkJSJKO_qytgGtp1ThXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"comment\": \"comment  test test test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/comment/post-id/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"comment",
+								"post-id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all posts with comments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc3NTUwLCJleHAiOjE3MzUzODgzNTB9.FdIkui5-YYGG6c-Z6m034nKmkJSJKO_qytgGtp1ThXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"comment\": \"comment  test test test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/comment/all-posts-with-comments/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"comment",
+								"all-posts-with-comments",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all posts with comments example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"post_id\": 2,\r\n    \"comment\": \"comment  test test test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3005/comment/all-posts-with-comments/2",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"comment",
+										"all-posts-with-comments",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"success\": true,\r\n    \"message\": \"success\",\r\n    \"data\": [\r\n        {\r\n            \"id\": 2,\r\n            \"title\": \" new post title is after updated\",\r\n            \"content\": \" new content of this post\",\r\n            \"author\": \"new author name is danny \",\r\n            \"comments\": [\r\n                {\r\n                    \"comment_id\": 4,\r\n                    \"comment\": \"comment 3\",\r\n                    \"post_id\": 2\r\n                },\r\n                {\r\n                    \"comment_id\": 5,\r\n                    \"comment\": \"comment 2\",\r\n                    \"post_id\": 2\r\n                },\r\n                {\r\n                    \"comment_id\": 7,\r\n                    \"comment\": \"comment 1\",\r\n                    \"post_id\": 2\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"title\": \"post title is after updated\",\r\n            \"content\": \"content of this post\",\r\n            \"author\": \"author name is danny \",\r\n            \"comments\": [\r\n                {\r\n                    \"comment_id\": 1,\r\n                    \"comment\": \" 33 comment  test test test66 66comment  test test test66 66\",\r\n                    \"post_id\": 1\r\n                },\r\n                {\r\n                    \"comment_id\": 2,\r\n                    \"comment\": \"comment 2\",\r\n                    \"post_id\": 1\r\n                },\r\n                {\r\n                    \"comment_id\": 3,\r\n                    \"comment\": \"comment 3\",\r\n                    \"post_id\": 1\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc3NTUwLCJleHAiOjE3MzUzODgzNTB9.FdIkui5-YYGG6c-Z6m034nKmkJSJKO_qytgGtp1ThXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \" 33 comment  test test test66 66comment  test test test66 66\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/comment/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbm55QGdtYWlsLmNvbSIsInN1YiI6OCwiaWF0IjoxNzM1Mzc3NTUwLCJleHAiOjE3MzUzODgzNTB9.FdIkui5-YYGG6c-Z6m034nKmkJSJKO_qytgGtp1ThXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \" 33 comment  test test test66 66comment  test test test66 66\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3005/comment/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"comment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
