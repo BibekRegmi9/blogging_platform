@@ -12,21 +12,19 @@ import { Post } from './post/entities/post.entity';
 import { CommentModule } from './comment/comment.module';
 import { Comment } from './comment/entities/comment.entity';
 import { ImageDetails } from './post/entities/ImageDetails.entity';
+import { AdminUserSeeder } from './config/adminUserSeeder';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      // host: process.env.POSTGRES_HOST,
-      // port: +process.env.PORT,
-      // username: process.env.POSTGRES_USER,
-      // password: process.env.POSTGRES_PASSWORD,
-      // database: process.env.POSTGRES_DATABASE,
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'blogging_db',
+      host: process.env.POSTGRES_HOST,
+      port: +process.env.POSTGRES_PORT,
+      username: process.env.POSTGRES_USER,
+      password: String(process.env.POSTGRES_PASSWORD),
+      database: process.env.POSTGRES_DATABASE,
       entities: [User, Post, Comment, ImageDetails],
       synchronize: true,
       logging: true,
@@ -34,7 +32,7 @@ import { ImageDetails } from './post/entities/ImageDetails.entity';
     UserModule,
     AuthModule,
     JwtModule.register({
-      secret: 'your-secret-key',  
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '3h' },  
     }),
     PostModule,
@@ -42,10 +40,11 @@ import { ImageDetails } from './post/entities/ImageDetails.entity';
   ],
   controllers: [AppController, AuthController],
   providers: [
-    AppService],
+    AppService, AdminUserSeeder],
 })
 export class AppModule {
 }
+
 
 
 

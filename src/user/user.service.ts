@@ -52,4 +52,12 @@ export class UserService {
   remove(id: number) {
     this.userRepository.delete({id});
   }
+
+  async findByUserName(email: string){
+    return this.userRepository.findOne({where: {email}});
+  }
+
+  async saveUser(email: string, password: string){
+    return this.userRepository.save({email, password});
+  }
 }

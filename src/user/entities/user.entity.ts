@@ -5,7 +5,7 @@ import { Column, Entity } from "typeorm";
 
 @Entity({name: 'users'})
 export class User extends CommonEntity {
-    @Column({nullable: false})
+    @Column({nullable: true})
     fullname: string;
 
     @Column({unique: true})
