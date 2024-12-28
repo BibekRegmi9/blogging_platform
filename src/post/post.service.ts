@@ -87,4 +87,5 @@ export class PostService {
     await this.imageUploadRepository.delete({post_id});
     
   }
+
 }
