@@ -29,10 +29,6 @@ export class AuthService{
 
     async login(email: string, password:string): Promise<{ token: string }> {
         const user = await this.userRepository.findOne({ where: { email }, select: ['password', 'email', 'id'], });
-        console.log(user.password);
-        console.log(password);
-        
-
         if (!user) {
             throw new UnauthorizedException('User not found with this email');
         }

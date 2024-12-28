@@ -28,4 +28,9 @@ export class CommentController {
   remove(@Param('id') id: string) {
     return this.commentService.remove(+id);
   }
+
+  @Get('all-posts-with-comments/:id')
+  getAllPostsAndComments(@Param('id') id: string) {
+    return this.commentService.getAllPostsAndComments(+id);
+  }
 }

@@ -1,6 +1,7 @@
 import * as multer from 'multer';
 import { extname } from 'path';
 import * as fs from 'fs';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 export const editFileName = (req, file, callback) => {
     const name = file.originalname.split('.')[0];
@@ -18,7 +19,14 @@ export const fileUploadStorage = (dir: any = '/upload') => ({
 
 export const imageFileFilter = (req, file, callback) => {
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-        return callback(new Error('Only image files are allowed!'), false);
+        return callback(
+            new HttpException(
+                'Only image files of type jpg, jpeg, and png are allowed!',
+                HttpStatus.BAD_REQUEST,
+            ),
+            false,
+        );
+
     }
     callback(null, true);
 };

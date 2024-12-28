@@ -33,20 +33,20 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const user = this.userRepository.findOne({where: {id}});
+    const user = await this.userRepository.findOne({where: {id}});
+
+    if(updateUserDto.email || updateUserDto.password){
+      throw new HttpException(
+        'Only profile information can be updated; email and password cannot be updated.',
+        HttpStatus.BAD_REQUEST, 
+      );    }
 
     if(!user){
-      throw new NotFoundException(`User with ID ${id} not found`);
+      throw new HttpException(`User with ID ${id} not found`, HttpStatus.BAD_REQUEST,);
     }
+    const updatedUser = await this.userRepository.save({...user, ...updateUserDto});
+    return updatedUser.id;
 
-    if (user && (await user).id != id) {
-      throw new HttpException(
-        `The user with email ${(await user).email} already exist`,
-        HttpStatus.CONFLICT,
-      );
-    }
-
-    return (await user).id;
   }
 
   remove(id: number) {

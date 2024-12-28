@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, UseInterceptors, UploadedFile, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, UseInterceptors, UploadedFile, Query, HttpException, HttpStatus } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
@@ -45,7 +45,11 @@ export class PostController {
     @UploadedFile() image: Express.Multer.File,
   ) {
     if (!image) {
-      throw new Error('image not uploaded');
+      // throw new Error('image not uploaded');
+      throw new HttpException(
+        'Please upload image to continue.',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
     return await this.postService.uploadImage(+id, image);
@@ -54,6 +58,11 @@ export class PostController {
   @Delete('post-id/:id')
   async deleteImage(@Param('id') id: string) {
     return await this.postService.deleteBlogPostImage(+id);
+  }
+
+  @Get('image-details/post:id')
+  getImageDetailsByPostId(@Param('id') id: string) {
+    return this.postService.getImageDetailsByPostId(+id);
   }
 
 }

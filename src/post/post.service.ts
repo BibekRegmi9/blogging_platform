@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Post } from './entities/post.entity';
@@ -25,7 +25,7 @@ export class PostService {
       post = await this.postRepository.findOne({ where: { id: createPostDto.id } });
     }
 
-    if (post!= null) {
+    if (post != null) {
       //update existing post
       post.title = createPostDto.title;
       post.content = createPostDto.content;
@@ -55,11 +55,14 @@ export class PostService {
   async uploadImage(post_id: number, file: Express.Multer.File | UploadFileObject) {
 
     const post = await this.postRepository.findOne({ where: { id: post_id } });
-    if(!post) {
-      throw new Error('Post not found');
+    if (!post) {
+      throw new HttpException(
+        'Post not found.',
+        HttpStatus.BAD_REQUEST,
+      );
     }
-    
-    //save image details in the database
+
+    //save image-details in the database
     const imageDetails = this.imageUploadRepository.create({
       post,
       post_id: post_id,
@@ -71,21 +74,25 @@ export class PostService {
     await this.imageUploadRepository.save(imageDetails);
   }
 
-  async deleteBlogPostImage(post_id: number){
+  async deleteBlogPostImage(post_id: number) {
     const post = this.postRepository.findOne({ where: { id: post_id } });
-    if(!post) {
+    if (!post) {
       throw new Error('Post not found');
     }
 
     const imageDetails = this.imageUploadRepository.findOne({ where: { post_id } });
-    if(!imageDetails) {
+    if (!imageDetails) {
       throw new Error('Image not found');
     }
 
     //delete image from the database and from the file system
     deleteDocument((await imageDetails).location);
-    await this.imageUploadRepository.delete({post_id});
-    
+    await this.imageUploadRepository.delete({ post_id });
+
+  }
+
+  async getImageDetailsByPostId(post_id: number) {
+    return this.imageUploadRepository.find({ where: { post_id } });
   }
 
 }

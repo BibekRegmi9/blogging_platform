@@ -9,11 +9,6 @@ import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // @Post()
-  // async create(@Body() createUserDto: CreateUserDto) {
-  //   return this.userService.create(createUserDto);
-  // }
-
   @Get()
   async findAll() {
     return this.userService.findAll();

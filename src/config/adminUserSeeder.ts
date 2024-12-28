@@ -17,9 +17,9 @@ export class AdminUserSeeder implements OnApplicationBootstrap {
         if (!existingUser) {
             const hashedPassword = await bcrypt.hash(defaultUser.password, 10);
             await this.userService.saveUser(defaultUser.email, hashedPassword);
-            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Default admin user created:', " email:"+ defaultUser.email + " password:" + defaultUser.password);
+            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Default admin user created:', " email: "+ defaultUser.email + " password: " + defaultUser.password);
         } else {
-            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Default admin user already exists:', " email:"+ defaultUser.email + " password:" + defaultUser.password);
+            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Default admin user already exists:', " email: "+ defaultUser.email + " password: " + defaultUser.password);
         }
 
 
